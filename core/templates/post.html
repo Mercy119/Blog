@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% with message = get_flashed_messages(with_categories=true) %}
+{% if message %}
+{% for category, message in message %}
+<div class="alert alert-{{ category }}">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% block content %}
+
+<br><div class="card" style="width: 18rem;">
+    <img src="https://weblinks.ru/wp-content/uploads/2021/12/1_0nqykqs0a8tjjqbmfnjp8q.jpg" class="card-img-top" alt="...">
+    <div class="card-body" style="background-color: rgb(96, 128, 233)">
+      <h5 class="card-title" style="color: black", btn btn-primar>Time - Money</h5>
+      <p class="card-text" style="color: black">You will remain a simple layman, or you will start working on yourself and you will reap the fruits of your labor!</p>
+      <a href="{{ url_for('post_delete') }}" class="btn btn-danger">Delete</a>
+<form action="{{ url_for('add_comment') }}" method="post">
+  <input type="text" name="message" id="">
+  <button>Add comment</button>
+</form>     
+{% endblock %}

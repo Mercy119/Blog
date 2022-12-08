@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% with message = get_flashed_messages(with_categories=true) %}
+{% if message %}
+{% for category, message in message %}
+<div class="alert alert-{{ category }}">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% block content %}
+<form action="{{ url_for('login') }}" method="post">
+  <input type="email" name="email" placeholder="Email">
+  <input type="password" name="password" placeholder="Paasword">
+  <button class="btn btn-primary">Sign Up</button>
+</form>
+<span class="btn btn-danger">Нет учетной записи?</span>
+<a href="{{ url_for('registration') }}" class="btn btn-primary">Зарегистрироваться</a>    
+{% endblock %}

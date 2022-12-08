@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% with message = get_flashed_messages(with_categories=true) %}
+{% if message %}
+{% for category, message in message %}
+<div class="alert alert-{{ category }}">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% block content %}
+
+<br><div class="card" style="width: 18rem;">
+  <img src="https://weblinks.ru/wp-content/uploads/2021/12/1_0nqykqs0a8tjjqbmfnjp8q.jpg" class="card-img-top" alt="...">
+  <div class="card-body" style="background-color: rgb(96, 128, 233)">
+<form action="{{ url_for('publish') }}" method="POST">
+    <input type="title" name="title" placeholder="Заголовок"><br>
+    <br><textarea name="body" id="" cols="30" rows="5"></textarea>
+    <button class="btn btn-primary">Publish</button>
+</form>    
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% with message = get_flashed_messages(with_categories=true) %}
+{% if message %}
+{% for category, message in message %}
+<div class="alert alert-{{ category }}">
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+{% block content %}
+<br><div class="card" style="width: 22rem;">
+    <img src="https://cs8.pikabu.ru/post_img/big/2017/04/19/10/1492620845122261992.png" class="card-img-top" alt="...">
+    <div class="card-body" style="background-color: rgb(96, 128, 233)">
+      <h5 class="card-title" style="color: black", btn btn-primar>Umar Dakaev</h5>
+      <p class="card-text" style="color: black">Пользователь скрыл информацию о себе!</p>
+      <a href="{{ url_for('logout') }}" class="btn btn-danger">Exit</a>
+<form action="{{ url_for('logout') }}" method="get">
+</form>
+
+{% endblock %}
